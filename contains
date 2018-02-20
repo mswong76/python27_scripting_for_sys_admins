@@ -1,0 +1,20 @@
+#! /bin/python
+
+import argparse
+parser = argparse.ArgumentParser(description='Search for words inclupding partial words')
+parser.add_argument('snippet', help='partial or complete string to search for in words file')
+
+args = parser.parse_args()
+
+snippet = args.snippet.lower()
+
+words = open('/usr/share/dict/words').readlines()
+# first value in the list is retunred if the other items are met.
+# this single line replaces the 5 lines beneith it.
+print([word.strip() for word in words if snippet in word.lower()])
+
+#matches = []
+#for word in words:
+#    if snippet in word.lower():
+#        matches.append(word)
+#print(matches)

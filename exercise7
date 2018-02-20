@@ -1,0 +1,30 @@
+#! /bin/python
+
+import argparse
+import linecache
+import os
+
+parser = argparse.ArgumentParser(description='Take in a file name and line number then return the string on the correspondign line number')
+parser.add_argument('filename', help='file to open and read')
+parser.add_argument('--line', '-l', type=int, help='the line numvber to read and return to the user')
+parser.add_argument('--version', '-v', action='version', version='%(prog)s 1.0')
+
+args = parser.parse_args()
+
+if os.path.exists('./%s' % args.filename):
+    with open(args.filename) as openfile:
+        lines = openfile.readlines()
+        line_count = sum(1 for line in args.filename)
+        if args.line > line_count:
+            print('Error, no such line exists in file.')
+        else:
+            print(lines[args.line])
+else:
+    print('Error, no such file exists.')
+
+# take in a file name as a parameter
+# print error message if file does not exist
+# take in a line number as a parameter
+# print error message if line number does not exist
+# print the line numer from the file
+

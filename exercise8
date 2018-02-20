@@ -1,0 +1,26 @@
+#! /bin/python
+
+import argparse
+from os import kill
+import subprocess
+import sys
+
+parser = argparse.ArgumentParser(description='Kill process if port is running')
+parser.add_argument('port_number', type=int, help='specify port number of the service you want to kill')
+
+args = parser.parse_args()
+
+PORT_NUMBER = args.port_number
+
+try:
+    output = subprocess.check_output(['lsof', '-n', '-i4TCP:%i' % PORT_NUMBER])
+except CalledProcessError:
+    print('No process running on specified port')
+    sys.exit(1)
+else:
+    values = output.split()
+    kill(int(values[10]), 9)
+    print('Process using port %i was terminated' % PORT_NUMBER)
+finally:
+    print('Thank you for using this program, have a rice day.')
+

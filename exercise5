@@ -1,0 +1,14 @@
+#! /bin/python
+
+from math import pi
+import os
+
+try:
+    digits_to_print = int(os.getenv('DIGITS') or 10)
+except ValueError:
+    print('You did not pass the correct value when starting the program')
+else:
+    print('%.*f' % (digits_to_print, pi))
+finally:
+    print('Thank you for using this program.  Have a rice day!')
+

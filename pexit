@@ -1,0 +1,10 @@
+#! /bin/python
+
+import sys
+
+print('Exit with a value')
+
+
+sys.exit(0)
+
+

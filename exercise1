@@ -1,0 +1,33 @@
+#! /bin/python
+
+
+# Set variables
+first_name = "Micah"
+last_name = "Wong"
+age = "5"
+birthdate = "1/16/2018"
+
+print ("This is a variable print")
+print ("My name is " + first_name + " " + last_name + ".")
+print ("I was born on " + birthdate + " and I'm " + age + " years old.")
+print
+
+print ("This is a variable print v2")
+print ("My name is %s %s." % (first_name, last_name))
+print ("I was born on %s and I'm %s years old." % (birthdate, age))
+print
+
+# Define list
+info_list = ['Micah', 'Wong', '1/16/2018', '5']
+
+print ("This is a list print")
+print ("My name is " + info_list[0] + " " + info_list[1] + ".")
+print ("I was born on " + info_list[2] + " and I'm " + info_list[3] + " years old.")
+print
+
+# Define dict
+info = {'first_name':'Micah', 'last_name':'Wong', 'birthdate':'1/16/2018', 'age':5}
+print ("This is a dict print")
+print ("My name is " + info['first_name'] + " " + info['last_name'] + ".")
+print ("I was born on " + info['birthdate'] + " and I'm " + str(info['age']) + " years old.")
+

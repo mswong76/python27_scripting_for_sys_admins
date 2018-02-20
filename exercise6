@@ -1,0 +1,11 @@
+#! /bin/python
+
+filename = raw_input('Enter the filename you would like to create: ')
+with open (filename, 'a') as openfile:
+    while True:
+        line_to_write = raw_input('Enter the lines you want to add to the file:')
+        if line_to_write.strip():
+            openfile.writelines(line_to_write + '\n')
+        else:
+            break
+

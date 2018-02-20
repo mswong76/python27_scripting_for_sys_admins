@@ -1,0 +1,26 @@
+#! /usr/bin/env python
+
+import requests
+from argparse import ArgumentParser
+import sys
+
+parser = ArgumentParser(description='Get the current weather information')
+parser.add_argument('zipcode', help='zipcode you want to know about weather')
+parser.add_argument('--country', '-c', default='us', help='country that defaults to US')
+
+
+API = 'a9576607fb69b796138b3cdab1814892'
+args = parser.parse_args()
+url = 'http://api.openweathermap.org/data/2.5/weather?zip=%s,%s&APPID=%s' % (
+        args.zipcode,
+        args.country,
+        API)
+
+res = requests.get(url)
+
+if res.status_code != 200:
+    print('Error connecting to openweathermap. %s' % res.status_code)
+    sys.exit(1)
+
+
+print(res.json())

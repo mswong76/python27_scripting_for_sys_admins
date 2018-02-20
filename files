@@ -1,0 +1,35 @@
+#! /bin/python
+
+import os
+
+# Reading from a file option 1
+xmen_file = open('xmen.txt')
+print (xmen_file.read())
+xmen_file.close()
+
+# Seek to the end of a file and write to the file
+xmen_file = open('xmen.txt', 'r+')
+
+xmen_file.seek(-1, os.SEEK_END)
+xmen_file.write('\nBeast\n')
+xmen_file.write('Phoenix\n')
+xmen_file.close()
+
+# Append to the end of a file
+xmen_file = open('xmen.txt', 'a')
+xmen_file.writelines(['Deadpool\n', 'Rogue\n'])
+xmen_file.close()
+
+with open('xmen.txt', 'a') as xmen_file:
+    xmen_file.write('Dylan Wong\n')
+
+# Reading from a file option 2
+xmen_file = open('xmen.txt')
+for line in xmen_file:
+    print(line)
+xmen_file.close()
+
+# Write to file to set back to default
+xmen_file = open('xmen.txt', 'w')
+xmen_file.writelines(['Wolverine\n', 'Cyclops\n', 'Storm\n', 'Nightcrawler\n', 'Professor X\n'])
+xmen_file.close()

@@ -1,0 +1,16 @@
+#! /bin/python
+
+def print_message(message,count):
+    while count > 0:
+        print(message)
+        count -= 1
+
+message = raw_input('What message would you like to print? ')
+try:
+    count = int(raw_input('How many times do you want to print your message? ')) or 1
+except ValueError:
+    print('Invalid count entered, restart program.')
+else:
+    print_message(message,count)
+finally:
+    print('Thank you for using this program.  Have a rice day!')

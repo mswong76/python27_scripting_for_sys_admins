@@ -1,0 +1,31 @@
+#! /usr/bin/env python
+
+import requests
+from argparse import ArgumentParser
+from sys import exit
+
+
+parser = ArgumentParser(description='This is a script for exercise 11')
+parser.add_argument('url', help='The URL to pull')
+parser.add_argument('--filename', '-f', help='The file to write the output.')
+parser.add_argument('--output', '-o', choices=['html', 'json'], default='html', help="Set 'json' for JSON or 'html' for HTML.  Default is 'html'")
+
+args = parser.parse_args()
+
+res =requests.get(args.url)
+
+if res.status_code != 200:
+    print('Error connecting to URL.  %s' % res.status_code)
+    exit(1)
+
+if args.output == 'html':
+    content = res.text
+else:
+    try:
+        content = res.json()
+    except ValueError:
+        print('Error: There is no json optput')
+        exit(1)
+
+with open(args.filename, 'w') as openfile:
+    openfile.write(content.encode("UTF-8"))

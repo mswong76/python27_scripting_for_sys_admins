@@ -1,0 +1,20 @@
+#! /bin/python
+
+user_list = [
+    {'admin':True, 'active':True, 'name':'Micah'},
+    {'admin':True, 'active':True, 'name':'Connie'},
+    {'admin':False, 'active':True, 'name':'Dylan'},
+    {'admin':False, 'active':True, 'name':'Emma'}
+]
+
+line_number = 0
+for user in user_list:
+    if user['admin'] and user['active']:
+        print ("%s ACTIVE - (ADMIN) %s" % (line_number, user['name']))
+    elif user['admin']:
+        print ("%s ADMIN %s" % (line_number,  user['name']))
+    elif user['active']:
+        print ("%s ACTIVE %s" % (line_number, user['name']))
+    else:
+        print ("%s %s" % (line_number, user['name']))
+    line_number += 1
